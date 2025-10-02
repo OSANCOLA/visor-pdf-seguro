@@ -12,7 +12,7 @@ interface DecodedToken {
   allowedBooks: number[];
 }
 
-export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
     const token = request.headers.get('authorization')?.split(' ')[1];
 
@@ -21,8 +21,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     }
 
     const decodedToken = jwt.verify(token, JWT_SECRET) as DecodedToken;
-    const resolvedParams = await params;
-const requestedBookId = parseInt(resolvedParams.id, 10);
+    const requestedBookId = parseInt(params.id, 10);
 
     if (!decodedToken.allowedBooks || !decodedToken.allowedBooks.includes(requestedBookId)) {
       return NextResponse.json({ message: 'Forbidden: You do not have access to this book' }, { status: 403 });
