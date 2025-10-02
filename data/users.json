@@ -2,7 +2,6 @@
   {
     "id": 1,
     "email": "oscarcornejo.eo@gmail.com",
-    "password": "$2b$10$dsvYW.RQinIKBgdVeUF2Bu8GDHtddZU.eVX97S9xZPDcp9jbHkZrO",
     "allowedBooks": [1,2]
   }
 ]
