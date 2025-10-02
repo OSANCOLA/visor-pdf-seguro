@@ -39,7 +39,8 @@ export async function POST(request: Request) {
       { expiresIn: '15m' } // Token expires in 15 minutes
     );
 
-    const loginLink = `http://localhost:3000/login/verify?token=${magicToken}`;
+    const baseUrl = process.env.URL || 'http://localhost:3000';
+    const loginLink = `${baseUrl}/login/verify?token=${magicToken}`;
 
     // Send email using SendGrid if API key is configured
     if (SENDGRID_API_KEY && FROM_EMAIL) {

@@ -30,7 +30,7 @@ export default function LoginPage() {
       }
 
       // SIMULATION: Display the magic link to the user
-      const loginLink = `http://localhost:3000/login/verify?token=${data.token}`;
+      const loginLink = `${window.location.origin}/login/verify?token=${data.token}`;
       setMessage(`Correo enviado (simulación): Por favor, haz clic en el siguiente enlace para iniciar sesión: ${loginLink}`);
 
     } catch (err: any) {
